@@ -68,7 +68,7 @@ export function Hero() {
           alt="Lucas Silva, personal trainer, em academia com iluminação verde néon"
           width={1600}
           height={1008}
-          className="h-full w-full object-cover object-[70%_center] opacity-70 transition-transform duration-700 ease-out"
+          className="h-full w-full object-cover object-[70%_center] opacity-90 transition-transform duration-700 ease-out"
           style={{
             transform:
               "scale(1.08) translate3d(calc(var(--px, 0) * -14px), calc(var(--py, 0) * -10px), 0)",
@@ -88,7 +88,7 @@ export function Hero() {
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-accent/40 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.25em] text-primary backdrop-blur">
               <span className="size-1.5 rounded-full bg-primary animate-pulse-glow" />
-              Vagas abertas · Online e presencial
+              Vagas abertas<span className="hidden sm:inline"> · Online e presencial</span>
             </span>
           </Reveal>
           <Reveal delay={100}>

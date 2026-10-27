@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Single-page landing at `/` with in-page anchor nav; sections live in `src/components/apex/`, content/constants in `src/lib/apex-data.ts` — keeps copy editable in one place.
+- Glass, neon edge, 3D tilt and scroll reveal are CSS utilities in `src/styles.css` driven by `TiltCard`/`Reveal` — reuse them instead of ad-hoc styles.
+- Contact form has no backend: it validates client-side and opens WhatsApp with a pre-filled message.
