@@ -23,7 +23,7 @@ export function Methodology() {
 
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {METHOD_STEPS.map((step, i) => {
-            const Icon = ICONS[i];
+            const Icon = ICONS[i] ?? Activity;
             return (
               <Reveal key={step.n} delay={i * 110} className="h-full">
                 <TiltCard className="group h-full p-7">

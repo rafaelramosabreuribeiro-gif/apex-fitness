@@ -15,7 +15,7 @@ function CountUp({ to, prefix, suffix }: { to: number; prefix: string; suffix: s
     if (!el) return;
     let raf = 0;
     const io = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
+      if (!entry?.isIntersecting) return;
       io.disconnect();
       const start = performance.now();
       const dur = 1600;
