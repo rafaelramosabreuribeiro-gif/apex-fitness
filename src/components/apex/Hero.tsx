@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import heroImg from "@/assets/hero-trainer.jpg";
 import { Button } from "@/components/ui/button";
@@ -46,7 +46,7 @@ export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
 
   // Parallax glow following the mouse for 3D depth
-  function handleMove(e: React.PointerEvent<HTMLElement>) {
+  function handleMove(e: PointerEvent<HTMLElement>) {
     const el = sectionRef.current;
     if (!el || e.pointerType !== "mouse") return;
     const r = el.getBoundingClientRect();
