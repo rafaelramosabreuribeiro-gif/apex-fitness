@@ -11,7 +11,7 @@ export type ProposalRequest = {
   whatsapp: string;
   objetivo: string;
   plano: string;
-  mensagem?: string;
+  mensagem?: string | undefined;
 };
 
 export function buildProposalMessage(data: ProposalRequest) {
