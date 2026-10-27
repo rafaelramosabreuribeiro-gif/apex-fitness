@@ -39,10 +39,10 @@ export function Contact({
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const parsed = schema.safeParse({
-      nome: form.get("nome"),
-      whatsapp: form.get("whatsapp"),
-      objetivo: form.get("objetivo"),
-      plano: form.get("plano"),
+      nome: form.get("nome") ?? "",
+      whatsapp: form.get("whatsapp") ?? "",
+      objetivo: form.get("objetivo") ?? "",
+      plano: form.get("plano") ?? "",
       mensagem: form.get("mensagem") || undefined,
     });
     if (!parsed.success) {
