@@ -21,6 +21,8 @@ const schema = z.object({
   mensagem: z.string().max(500).optional(),
 });
 
+type FieldName = keyof z.infer<typeof schema>;
+
 const fieldClass =
   "w-full rounded-2xl border border-input bg-background/60 px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-all focus:border-primary focus:shadow-neon";
 
@@ -31,7 +33,7 @@ export function Contact({
   selectedPlan: string;
   onPlanChange: (v: string) => void;
 }) {
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -44,9 +46,9 @@ export function Contact({
       mensagem: form.get("mensagem") || undefined,
     });
     if (!parsed.success) {
-      const errs: Record<string, string> = {};
+      const errs: Partial<Record<FieldName, string>> = {};
       parsed.error.issues.forEach((i) => {
-        errs[String(i.path[0])] = i.message;
+        errs[i.path[0] as FieldName] = i.message;
       });
       setErrors(errs);
       toast.error("Confira os campos destacados.");
