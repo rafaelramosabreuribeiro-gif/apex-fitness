@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ElementType, type ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ElementType, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 type RevealProps = {
@@ -38,7 +38,7 @@ export function Reveal({ children, className, delay = 0, as: Tag = "div" }: Reve
     <Tag
       ref={ref}
       className={cn("reveal", className)}
-      style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
+      style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
     >
       {children}
     </Tag>
