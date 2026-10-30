@@ -119,7 +119,7 @@ export function Hero() {
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={400 + i * 90}>
               <TiltCard className="h-full px-3 py-4 sm:px-6 sm:py-6" max={14}>
-                <div className="depth-1 font-display text-2xl font-black text-primary sm:text-4xl">
+                <div className="depth-1 font-display text-xl font-black text-primary min-[400px]:text-2xl sm:text-4xl">
                   <CountUp to={s.value} prefix={s.prefix} suffix={s.suffix} />
                 </div>
                 <div className="depth-1 mt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground sm:text-xs sm:tracking-[0.18em]">
