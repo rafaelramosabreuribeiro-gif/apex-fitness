@@ -13,3 +13,4 @@
 - Single-page landing at `/` with in-page anchor nav; sections live in `src/components/apex/`, content/constants in `src/lib/apex-data.ts` — keeps copy editable in one place.
 - Glass, neon edge, 3D tilt and scroll reveal are CSS utilities in `src/styles.css` driven by `TiltCard`/`Reveal` — reuse them instead of ad-hoc styles.
 - Contact form has no backend: it validates client-side and opens WhatsApp with a pre-filled message.
+- BMI math and categories live as pure functions in `src/lib/bmi.ts` (tested in `bmi.test.ts`); the calculator component only handles input and display.
