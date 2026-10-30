@@ -2,15 +2,16 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/apex/Header";
 import { Hero } from "@/components/apex/Hero";
-import { Methodology } from "@/components/apex/Methodology";
+import { Programs } from "@/components/apex/Programs";
 import { Plans } from "@/components/apex/Plans";
-import { About } from "@/components/apex/About";
+import { BmiCalculator } from "@/components/apex/BmiCalculator";
+import { Coaches } from "@/components/apex/Coaches";
 import { Contact } from "@/components/apex/Contact";
 import { Footer } from "@/components/apex/Footer";
 
-const TITLE = "APEX · Lucas Silva Personal — Treino e consultoria fitness sob medida";
+const TITLE = "APEX Fitness & Performance — High Performance Training & Coaching";
 const DESCRIPTION =
-  "Personal trainer e consultoria fitness com acompanhamento 100% personalizado, treinos eficientes e nutrição guiada para resultados reais. Online e presencial.";
+  "Customized workouts, certified coaches and membership plans from $29/mo. Personal training, strength, fat loss and mobility programs plus a free BMI calculator.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,7 +32,7 @@ function Index() {
 
   function handleSelectPlan(name: string) {
     setSelectedPlan(name);
-    document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (
@@ -39,9 +40,10 @@ function Index() {
       <Header />
       <main>
         <Hero />
-        <Methodology />
+        <Programs />
         <Plans onSelectPlan={handleSelectPlan} />
-        <About />
+        <BmiCalculator />
+        <Coaches />
         <Contact selectedPlan={selectedPlan} onPlanChange={setSelectedPlan} />
       </main>
       <Footer />

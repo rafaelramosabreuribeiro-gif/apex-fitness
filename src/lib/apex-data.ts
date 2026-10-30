@@ -1,69 +1,102 @@
-// Demo content for the APEX landing page (portfolio project).
-// WhatsApp number is a demonstration placeholder.
-export const WHATSAPP_NUMBER = "5511999999999";
+// Demo content for the APEX Fitness & Performance landing page (portfolio project).
+// WhatsApp number, email and social links are demonstration placeholders.
+import aboutLucas from "@/assets/about-lucas.jpg";
+import coachMaya from "@/assets/coach-maya.jpg";
+import coachDaniel from "@/assets/coach-daniel.jpg";
 
-export function whatsappLink(message = "Olá Lucas! Quero começar minha transformação com a APEX.") {
+export const BRAND = {
+  name: "APEX",
+  tagline: "Fitness & Performance",
+  full: "APEX Fitness & Performance",
+} as const;
+
+export const WHATSAPP_NUMBER = "15550102030";
+export const WHATSAPP_DISPLAY = "+1 (555) 010-2030";
+export const CONTACT_EMAIL = "hello@apexfitness.com";
+
+export function whatsappLink(message = "Hi APEX! I'd like to start my free trial.") {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
 export type ProposalRequest = {
-  nome: string;
-  whatsapp: string;
-  objetivo: string;
-  plano: string;
-  mensagem?: string | undefined;
+  name: string;
+  phone: string;
+  goal: string;
+  plan: string;
+  message?: string | undefined;
 };
 
 export function buildProposalMessage(data: ProposalRequest) {
   const lines = [
-    "Olá Lucas! Gostaria de solicitar uma proposta APEX.",
+    "Hi APEX! I'd like to start my free trial.",
     "",
-    `Nome: ${data.nome}`,
-    `WhatsApp: ${data.whatsapp}`,
-    `Objetivo: ${data.objetivo}`,
-    `Plano de interesse: ${data.plano}`,
+    `Name: ${data.name}`,
+    `Phone / WhatsApp: ${data.phone}`,
+    `Goal: ${data.goal}`,
+    `Plan of interest: ${data.plan}`,
   ];
-  if (data.mensagem?.trim()) lines.push(`Mensagem: ${data.mensagem.trim()}`);
+  if (data.message?.trim()) lines.push(`Message: ${data.message.trim()}`);
   return lines.join("\n");
 }
 
 export const NAV_LINKS = [
-  { label: "Início", href: "#inicio" },
-  { label: "Metodologia", href: "#metodologia" },
-  { label: "Planos", href: "#planos" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Contato", href: "#contato" },
+  { label: "Home", href: "#home" },
+  { label: "Programs", href: "#programs" },
+  { label: "Plans", href: "#plans" },
+  { label: "BMI Calculator", href: "#bmi" },
+  { label: "Contact", href: "#contact" },
 ] as const;
 
 export const STATS = [
-  { value: 500, prefix: "+", suffix: "", label: "Alunos" },
-  { value: 98, prefix: "", suffix: "%", label: "de Satisfação" },
-  { value: 10, prefix: "+", suffix: " anos", label: "de Experiência" },
-  { value: 24, prefix: "", suffix: "/7", label: "Suporte no App" },
+  { value: 1500, prefix: "", suffix: "+", label: "Active Members" },
+  { value: 15, prefix: "", suffix: "+", label: "Certified Coaches" },
+  { value: 98, prefix: "", suffix: "%", label: "Goal Success Rate" },
 ] as const;
 
-export const METHOD_STEPS = [
+export type Program = {
+  id: string;
+  title: string;
+  text: string;
+  goals: string[];
+  intensity: string;
+  /** 1 (low) to 3 (high), drives the intensity meter */
+  level: 1 | 2 | 3;
+};
+
+export const PROGRAMS: Program[] = [
   {
-    n: "01",
-    title: "Avaliação Individualizada",
-    text: "Anamnese completa, composição corporal, mobilidade e histórico. Seu ponto de partida mapeado com precisão.",
+    id: "personal",
+    title: "Personal Training",
+    text: "One-on-one sessions with a dedicated coach. Every rep, set and progression is built around your body, schedule and goals.",
+    goals: ["Fully tailored", "Technique mastery", "Accountability"],
+    intensity: "Adaptive",
+    level: 2,
   },
   {
-    n: "02",
-    title: "Planos Nutricionais Adaptados",
-    text: "Estratégia alimentar flexível, alinhada à sua rotina e ao seu objetivo — sem dietas impossíveis.",
+    id: "hypertrophy",
+    title: "Hypertrophy & Strength",
+    text: "Periodized lifting blocks focused on progressive overload to build lean muscle and raise your numbers on the big lifts.",
+    goals: ["Muscle gain", "Max strength", "Body recomposition"],
+    intensity: "High",
+    level: 3,
   },
   {
-    n: "03",
-    title: "Acompanhamento Semanal via App",
-    text: "Check-ins semanais, métricas de evolução e ajustes de carga direto no aplicativo.",
+    id: "fat-loss",
+    title: "Fat Loss & Conditioning",
+    text: "Metabolic circuits, HIIT and smart nutrition targets that burn fat while protecting the muscle you've worked for.",
+    goals: ["Fat loss", "Endurance", "Heart health"],
+    intensity: "High",
+    level: 3,
   },
   {
-    n: "04",
-    title: "Correção de Postura e Execução",
-    text: "Análise de vídeos e feedback técnico para treinar com segurança e máxima eficiência.",
+    id: "cross",
+    title: "Cross Training & Mobility",
+    text: "Functional movement, kettlebells and mobility flows to move better, stay injury-free and perform in everyday life.",
+    goals: ["Mobility", "Athleticism", "Injury prevention"],
+    intensity: "Moderate",
+    level: 2,
   },
-] as const;
+];
 
 export type Plan = {
   id: string;
@@ -78,85 +111,108 @@ export type Plan = {
 
 export const PLANS: Plan[] = [
   {
-    id: "online",
-    name: "Consultoria Online",
-    tagline: "Treine de onde estiver",
-    price: "197",
-    period: "/mês",
+    id: "basic",
+    name: "Basic",
+    tagline: "Build the habit",
+    price: "29",
+    period: "/mo",
     features: [
-      "Treino personalizado via app",
-      "Suporte semanal por chat",
-      "Ajustes mensais do programa",
-      "Guia nutricional",
+      "Full gym floor access",
+      "Personalized workout plan in the app",
+      "Monthly progress check-in",
+      "Member community challenges",
+    ],
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    tagline: "Train with a coach",
+    price: "59",
+    period: "/mo",
+    featured: true,
+    badge: "Most popular",
+    features: [
+      "Everything in Basic",
+      "Unlimited group classes",
+      "Weekly coach check-ins",
+      "Nutrition guide & macro targets",
+      "Monthly body composition scan",
     ],
   },
   {
     id: "vip",
-    name: "Plano Presencial / VIP",
-    tagline: "Atendimento lado a lado",
-    price: "597",
-    period: "/mês",
-    featured: true,
-    badge: "Mais procurado",
+    name: "VIP Performance",
+    tagline: "Elite, all-in coaching",
+    price: "99",
+    period: "/mo",
+    badge: "Best results",
     features: [
-      "Atendimento individual na academia",
-      "Consultoria online inclusa",
-      "Correção de execução em tempo real",
-      "Plano nutricional adaptado",
-      "Prioridade na agenda",
-    ],
-  },
-  {
-    id: "semestral",
-    name: "Semestral de Transformação",
-    tagline: "6 meses para virar a chave",
-    price: "167",
-    period: "/mês · 6x",
-    badge: "Melhor custo",
-    features: [
-      "Acompanhamento completo por 6 meses",
-      "Plano de hábitos e rotina",
-      "Reavaliações bimestrais",
-      "Nutrição guiada e periodizada",
-      "Grupo exclusivo de alunos",
+      "Everything in Pro",
+      "4 one-on-one sessions per month",
+      "Custom nutrition plan",
+      "Form & technique video reviews",
+      "Priority booking & 24/7 coach chat",
     ],
   },
 ];
 
-export const TESTIMONIALS = [
+export const COACHES = [
   {
-    name: "Mariana C.",
-    role: "Consultoria Online",
-    result: "-12 kg em 5 meses",
-    quote:
-      "Nunca tinha conseguido manter constância. O acompanhamento semanal mudou tudo — hoje treinar é parte da minha rotina.",
+    name: "Lucas Silva",
+    role: "Head Coach & Founder",
+    specialty: "Personal Training",
+    image: aboutLucas,
+    imageWidth: 912,
+    imageHeight: 1104,
+    credentials: ["NSCA-CSCS Certified", "B.S. in Exercise Science", "10+ years coaching"],
   },
   {
-    name: "Rafael M.",
-    role: "Plano VIP",
-    result: "+6 kg de massa magra",
-    quote:
-      "A correção de execução fez uma diferença absurda. Saí da estagnação e voltei a evoluir carga toda semana.",
+    name: "Maya Torres",
+    role: "Strength & Hypertrophy Coach",
+    specialty: "Hypertrophy & Strength",
+    image: coachMaya,
+    imageWidth: 896,
+    imageHeight: 1120,
+    credentials: ["NASM Certified Personal Trainer", "USA Weightlifting Level 1", "Former competitive powerlifter"],
   },
   {
-    name: "Juliana P.",
-    role: "Semestral",
-    result: "-9% de gordura corporal",
-    quote:
-      "Mais do que o corpo, ganhei disciplina. O plano de hábitos foi o que eu precisava para não desistir.",
-  },
-  {
-    name: "Thiago R.",
-    role: "Consultoria Online",
-    result: "Fim das dores lombares",
-    quote:
-      "Treino em casa e no hotel quando viajo. O Lucas adapta tudo e as dores nas costas sumiram.",
+    name: "Daniel Brooks",
+    role: "Conditioning & Mobility Coach",
+    specialty: "Cross Training & Mobility",
+    image: coachDaniel,
+    imageWidth: 896,
+    imageHeight: 1120,
+    credentials: ["ACE Certified Personal Trainer", "FRC Mobility Specialist", "Precision Nutrition Level 1"],
   },
 ] as const;
 
-export const QUALIFICATIONS = [
-  "CREF ativo · Bacharel em Educação Física",
-  "Pós-graduação em Fisiologia do Exercício",
-  "Especialista em Hipertrofia e Emagrecimento",
-  "Certificação em Nutrição Esportiva",
+export const TESTIMONIALS = [
+  {
+    name: "Sarah M.",
+    role: "Pro Member",
+    result: "-26 lb in 5 months",
+    quote:
+      "I'd never been able to stay consistent. The weekly check-ins changed everything — training is now just part of who I am.",
+  },
+  {
+    name: "James R.",
+    role: "VIP Performance",
+    result: "+13 lb of lean muscle",
+    quote:
+      "The form reviews made a massive difference. I broke through a two-year plateau and I'm adding weight to the bar every week.",
+  },
+  {
+    name: "Olivia K.",
+    role: "Pro Member",
+    result: "-9% body fat",
+    quote:
+      "More than a new body, I built real discipline. The coaches kept me accountable on the days I wanted to quit.",
+  },
+  {
+    name: "Marcus T.",
+    role: "VIP Performance",
+    result: "Lower back pain gone",
+    quote:
+      "I travel constantly, and my coach adapts every session to hotel gyms. My back pain is gone and I feel stronger than ever.",
+  },
 ] as const;

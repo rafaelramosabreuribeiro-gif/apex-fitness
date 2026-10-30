@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { NAV_LINKS } from "@/lib/apex-data";
+import { BRAND, NAV_LINKS } from "@/lib/apex-data";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -23,19 +23,19 @@ export function Header() {
           scrolled ? "glass" : "border border-transparent",
         )}
       >
-        <a href="#inicio" className="group flex items-center gap-3" aria-label="APEX — início">
+        <a href="#home" className="group flex items-center gap-3" aria-label={`${BRAND.full} — home`}>
           <span className="grid size-9 place-items-center rounded-xl bg-gradient-neon font-display text-sm font-black text-primary-foreground shadow-neon transition-transform duration-300 group-hover:rotate-6">
             A
           </span>
           <span className="leading-none">
-            <span className="block font-display text-base font-black tracking-[0.2em]">APEX</span>
+            <span className="block font-display text-base font-black tracking-[0.2em]">{BRAND.name}</span>
             <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              Lucas Silva Personal
+              {BRAND.tagline}
             </span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Principal">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {NAV_LINKS.map((l) => (
             <a
               key={l.href}
@@ -49,13 +49,13 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <Button asChild variant="neon" size="pill" className="hidden sm:inline-flex">
-            <a href="#contato">Começar agora</a>
+            <a href="#contact">Start Free Trial</a>
           </Button>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             className="grid size-10 place-items-center rounded-full border border-border text-foreground transition-colors hover:border-primary hover:text-primary lg:hidden"
-            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -66,10 +66,10 @@ export function Header() {
       <div
         className={cn(
           "glass mx-auto mt-2 max-w-7xl overflow-hidden rounded-3xl transition-all duration-500 lg:hidden",
-          open ? "max-h-[420px] opacity-100" : "pointer-events-none max-h-0 border-transparent opacity-0",
+          open ? "max-h-[460px] opacity-100" : "pointer-events-none max-h-0 border-transparent opacity-0",
         )}
       >
-        <nav className="flex flex-col p-4" aria-label="Menu mobile">
+        <nav className="flex flex-col p-4" aria-label="Mobile menu">
           {NAV_LINKS.map((l) => (
             <a
               key={l.href}
@@ -81,8 +81,8 @@ export function Header() {
             </a>
           ))}
           <Button asChild variant="neon" size="xl" className="mt-3">
-            <a href="#contato" onClick={() => setOpen(false)}>
-              Começar agora
+            <a href="#contact" onClick={() => setOpen(false)}>
+              Start Free Trial
             </a>
           </Button>
         </nav>
