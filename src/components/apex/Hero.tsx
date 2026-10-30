@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero-trainer.jpg";
 import { Button } from "@/components/ui/button";
-import { STATS, whatsappLink } from "@/lib/apex-data";
+import { STATS } from "@/lib/apex-data";
 import { Reveal } from "./Reveal";
 import { TiltCard } from "./TiltCard";
 
