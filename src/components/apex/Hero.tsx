@@ -36,7 +36,7 @@ function CountUp({ to, prefix, suffix }: { to: number; prefix: string; suffix: s
   return (
     <span ref={ref}>
       {prefix}
-      {n}
+      {n.toLocaleString("en-US")}
       {suffix}
     </span>
   );
@@ -56,7 +56,7 @@ export function Hero() {
 
   return (
     <section
-      id="inicio"
+      id="home"
       ref={sectionRef}
       onPointerMove={handleMove}
       className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden pt-28"
@@ -65,7 +65,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-20">
         <img
           src={heroImg}
-          alt="Lucas Silva, personal trainer, em academia com iluminação verde néon"
+          alt="APEX coach training in a gym lit with neon green lights"
           width={1600}
           height={1008}
           className="h-full w-full object-cover object-[70%_center] opacity-90 transition-transform duration-700 ease-out"
@@ -86,45 +86,43 @@ export function Hero() {
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
         <div className="max-w-3xl">
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-accent/40 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.25em] text-primary backdrop-blur">
-              <span className="size-1.5 rounded-full bg-primary animate-pulse-glow" />
-              Vagas abertas<span className="hidden sm:inline"> · Online e presencial</span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-accent/40 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary backdrop-blur sm:text-[11px] sm:tracking-[0.25em]">
+              <span className="size-1.5 shrink-0 rounded-full bg-primary animate-pulse-glow" />
+              APEX Fitness — High Performance Training
             </span>
           </Reveal>
           <Reveal delay={100}>
-            <h1 className="mt-6 text-[2.35rem] font-black uppercase leading-[0.98] sm:text-6xl lg:text-7xl">
-              Transforme seu corpo e sua{" "}
-              <span className="text-gradient-neon text-glow">disciplina</span> sob medida
+            <h1 className="mt-6 text-[2.5rem] font-black uppercase leading-[0.98] sm:text-6xl lg:text-7xl">
+              Transform your body and{" "}
+              <span className="text-gradient-neon text-glow">mind</span>
             </h1>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-              Acompanhamento 100% personalizado, treinos eficientes e nutrição guiada para
-              resultados reais.
+              Customized workouts, high-performance coaching, and a result-driven environment
+              built to break your limits.
             </p>
           </Reveal>
           <Reveal delay={300} className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="neon" size="xl">
-              <a href="#planos">
-                Ver planos <ArrowRight />
+              <a href="#programs">
+                Explore Programs <ArrowRight />
               </a>
             </Button>
             <Button asChild variant="glass" size="xl">
-              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
-                <MessageCircle /> Falar no WhatsApp
-              </a>
+              <a href="#plans">Join Now</a>
             </Button>
           </Reveal>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-3 pb-10 sm:gap-4 lg:grid-cols-4 lg:pb-14">
+        <div className="mt-14 grid grid-cols-3 gap-2 pb-10 sm:gap-4 lg:max-w-4xl lg:pb-14">
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={400 + i * 90}>
-              <TiltCard className="h-full px-5 py-5 sm:px-6 sm:py-6" max={14}>
-                <div className="depth-1 font-display text-3xl font-black text-primary sm:text-4xl">
+              <TiltCard className="h-full px-3 py-4 sm:px-6 sm:py-6" max={14}>
+                <div className="depth-1 font-display text-2xl font-black text-primary sm:text-4xl">
                   <CountUp to={s.value} prefix={s.prefix} suffix={s.suffix} />
                 </div>
-                <div className="depth-1 mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                <div className="depth-1 mt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground sm:text-xs sm:tracking-[0.18em]">
                   {s.label}
                 </div>
               </TiltCard>

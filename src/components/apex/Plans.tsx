@@ -8,18 +8,18 @@ import { TiltCard } from "./TiltCard";
 
 export function Plans({ onSelectPlan }: { onSelectPlan: (planName: string) => void }) {
   return (
-    <section id="planos" className="relative overflow-hidden py-24 sm:py-32">
+    <section id="plans" className="relative overflow-hidden py-24 sm:py-32">
       <div className="bg-grid absolute inset-0 opacity-60" />
       <div className="glow-orb absolute left-1/2 top-1/3 size-[700px] -translate-x-1/2" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="Planos"
+          eyebrow="Pricing"
           title={
             <>
-              Escolha seu <span className="text-gradient-neon">nível de entrega</span>
+              Membership <span className="text-gradient-neon">plans</span>
             </>
           }
-          subtitle="Vagas limitadas por mês para garantir qualidade no acompanhamento de cada aluno."
+          subtitle="Choose the level of coaching that fits your goals. Upgrade anytime as you progress."
         />
 
         <div className="mt-16 grid items-stretch gap-6 lg:grid-cols-3">
@@ -52,7 +52,7 @@ export function Plans({ onSelectPlan }: { onSelectPlan: (planName: string) => vo
                 </div>
 
                 <div className="depth-2 mt-7 flex items-end gap-1">
-                  <span className="pb-2 text-sm font-semibold text-muted-foreground">R$</span>
+                  <span className="self-start pt-1 text-2xl font-bold text-muted-foreground">$</span>
                   <span className="font-display text-6xl font-black leading-none">{plan.price}</span>
                   <span className="pb-2 text-sm font-semibold text-muted-foreground">
                     {plan.period}
@@ -76,7 +76,7 @@ export function Plans({ onSelectPlan }: { onSelectPlan: (planName: string) => vo
                   className="depth-2 mt-9 w-full"
                   onClick={() => onSelectPlan(plan.name)}
                 >
-                  Garantir vaga
+                  Get {plan.name}
                 </Button>
               </TiltCard>
             </Reveal>
