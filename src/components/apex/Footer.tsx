@@ -1,5 +1,5 @@
-import { Instagram, Mail, MapPin, MessageCircle, Youtube } from "lucide-react";
-import { NAV_LINKS, whatsappLink } from "@/lib/apex-data";
+import { Globe, Instagram, Mail, MessageCircle, Youtube } from "lucide-react";
+import { BRAND, CONTACT_EMAIL, NAV_LINKS, WHATSAPP_DISPLAY, whatsappLink } from "@/lib/apex-data";
 
 export function Footer() {
   return (
@@ -8,15 +8,15 @@ export function Footer() {
         <div className="flex w-max animate-marquee gap-10 whitespace-nowrap font-display text-2xl font-black uppercase text-foreground/10 sm:text-4xl">
           {Array.from({ length: 2 }).map((_, k) => (
             <span key={k} className="flex gap-10" aria-hidden={k === 1}>
-              <span>Disciplina</span>
+              <span>Discipline</span>
               <span className="text-primary/40">✦</span>
-              <span>Constância</span>
+              <span>Consistency</span>
               <span className="text-primary/40">✦</span>
-              <span>Resultado</span>
+              <span>Results</span>
               <span className="text-primary/40">✦</span>
               <span>APEX</span>
               <span className="text-primary/40">✦</span>
-              <span>Sem achismo</span>
+              <span>No limits</span>
               <span className="text-primary/40">✦</span>
             </span>
           ))}
@@ -30,15 +30,15 @@ export function Footer() {
               A
             </span>
             <div className="leading-none">
-              <p className="font-display text-lg font-black tracking-[0.2em]">APEX</p>
+              <p className="font-display text-lg font-black tracking-[0.2em]">{BRAND.name}</p>
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                Lucas Silva Personal
+                {BRAND.tagline}
               </p>
             </div>
           </div>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Personal trainer e consultoria fitness com acompanhamento 100% personalizado, online e
-            presencial.
+            High-performance training and coaching with fully personalized programs — in the gym
+            and online.
           </p>
           <div className="mt-6 flex gap-3">
             {[
@@ -62,7 +62,7 @@ export function Footer() {
 
         <div>
           <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-primary">
-            Navegação
+            Navigation
           </p>
           <ul className="mt-5 space-y-3">
             {NAV_LINKS.map((l) => (
@@ -77,17 +77,17 @@ export function Footer() {
 
         <div>
           <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-primary">
-            Contato
+            Contact
           </p>
           <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
             <li className="flex items-center gap-2">
-              <MessageCircle className="size-4 text-primary" /> (11) 99999-9999
+              <MessageCircle className="size-4 text-primary" /> {WHATSAPP_DISPLAY}
             </li>
             <li className="flex items-center gap-2">
-              <Mail className="size-4 text-primary" /> contato@apexpersonal.com.br
+              <Mail className="size-4 text-primary" /> {CONTACT_EMAIL}
             </li>
             <li className="flex items-center gap-2">
-              <MapPin className="size-4 text-primary" /> São Paulo · SP
+              <Globe className="size-4 text-primary" /> In-gym & online worldwide
             </li>
           </ul>
         </div>
@@ -95,9 +95,11 @@ export function Footer() {
 
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-center text-xs text-muted-foreground sm:flex-row sm:px-8 sm:text-left">
-          <p>© {new Date().getFullYear()} APEX · Lucas Silva Personal. Todos os direitos reservados.</p>
+          <p>
+            © {new Date().getFullYear()} {BRAND.full}. All rights reserved.
+          </p>
           <p className="rounded-full border border-primary/30 bg-accent/40 px-3 py-1 font-semibold text-primary">
-            Projeto demonstrativo de portfólio
+            Demonstrative Freelance Portfolio Project
           </p>
         </div>
       </div>
